@@ -5,6 +5,7 @@ export function genOverlay() {
 
     overlay.click(() => {
         overlay.remove();
+        $(".modal").remove();
         $("body").css("overflow", "auto");
     });
 

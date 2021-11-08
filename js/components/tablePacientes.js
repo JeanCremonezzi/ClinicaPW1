@@ -1,3 +1,4 @@
+import { genModal } from "./modal.js";
 import {genOverlay} from "./overlay.js";
 
 /* Gera tabela de pacientes */
@@ -49,6 +50,7 @@ export function populateTablePacientes(data) {
         btnConsultas.attr({"class": "btnConsultas"});
         btnConsultas.click(() => {
             genOverlay();
+            genModal("consultas", paciente.id);
         });
 
         consultas.append(btnConsultas);
