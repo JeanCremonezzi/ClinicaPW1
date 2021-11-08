@@ -8,12 +8,10 @@ thead > tr {
     background: var(--elevation2);
     height: 80px;
     border-bottom: 2px solid var(--secondary);
-    border-radius: 8px 8px 0 0;
 }
 
 tr, td, th {
     text-align: center;
-    box-sizing: border-box;
 }
 
 tbody > tr:nth-of-type(even) {

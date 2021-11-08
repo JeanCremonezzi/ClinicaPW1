@@ -1,0 +1,10 @@
+.overlay {
+    cursor: pointer;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #121212be;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}

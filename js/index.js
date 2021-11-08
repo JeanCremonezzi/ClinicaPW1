@@ -11,5 +11,4 @@ $(document).ready(() => {
 	.catch((err) => {
 		alert(`Error status ${err.status} on get pacientes`);
 	});
-
 });

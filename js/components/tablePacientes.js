@@ -1,3 +1,5 @@
+import {genOverlay} from "./overlay.js";
+
 /* Gera tabela de pacientes */
 export function genTablePacientes() {
     let table = $("<table></>");
@@ -35,7 +37,7 @@ export function populateTablePacientes(data) {
     data.map((paciente) => {
         let row = $("<tr></tr>");
         row.attr({"id": paciente.id});
-        
+
         let nome = $(`<td>${paciente.nome}</td>`);
 
         let nasc = $(`<td>${formatDate(paciente.dataNascimento)}</td>`);
@@ -45,6 +47,10 @@ export function populateTablePacientes(data) {
         let consultas = $(`<td></td>`);
         let btnConsultas = $("<button>Consultas</button>");
         btnConsultas.attr({"class": "btnConsultas"});
+        btnConsultas.click(() => {
+            genOverlay();
+        });
+
         consultas.append(btnConsultas);
 
         let acoes = $(`<td></td>`);
