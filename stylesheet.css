@@ -1,0 +1,25 @@
+/* font-family: 'Mukta', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
+
+/* font-family: 'Quicksand', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --surface: #121212;
+    --text: rgba(255, 255, 255, 0.884);
+    font-size: 20px;
+}
+
+body {
+    margin: 0;
+    font-family: 'Mukta', sans-serif;
+    font-size: 2rem;
+    color: var(--text);
+    background: var(--surface);
+}
+
+@media (max-width: 900px) {
+    :root {
+        font-size: 16px;
+    }
+}
