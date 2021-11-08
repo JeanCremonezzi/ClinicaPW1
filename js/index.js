@@ -1,3 +1,5 @@
+import {tablePacientes} from "./components/tablePacientes.js";
+
 $(document).ready(() => {
-	//alert("JQUERY!!!");
+	$("main").append(tablePacientes);
 });
