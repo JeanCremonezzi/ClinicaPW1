@@ -5,6 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 @import "./styles/navBar.css";
+@import "./styles/main.css";
 
 :root {
     --surface: #121212;
