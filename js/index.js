@@ -1,3 +1,3 @@
 $(document).ready(() => {
-    alert("JQUERY!!!");
-})
+	//alert("JQUERY!!!");
+});

@@ -4,16 +4,21 @@
 /* font-family: 'Quicksand', sans-serif; */
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
+@import "./styles/navBar.css";
+
 :root {
     --surface: #121212;
-    --text: rgba(255, 255, 255, 0.884);
+    --elevation1: #1d1d1d;
+    --elevation2: #2b2b2b;
+    --secondary: #BC8CF2;
+    --text: #FFF;
     font-size: 20px;
 }
 
 body {
     margin: 0;
     font-family: 'Mukta', sans-serif;
-    font-size: 2rem;
+    font-size: 1rem;
     color: var(--text);
     background: var(--surface);
 }
