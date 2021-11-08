@@ -12,11 +12,8 @@ thead > tr {
 }
 
 tr, td, th {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
 }
 
 tbody > tr:nth-of-type(even) {
@@ -28,9 +25,35 @@ tbody > tr {
     height: 50px;
 }
 
+td > button {
+    border: 0;
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-weight: 0.8rem;
+    font-family: 'Mukta', sans-serif;
+}
+
+button.btnConsultas {
+    background: #A2D2FF;
+}
+
+button.btnAcoes {
+    background: #5C7AEA;
+    color: var(--text);
+}
+
 @media (max-width: 900px) {
     table {
         width: 100%;
         font-size: 0.8rem;
+    }
+
+    td > button {
+        width: 70px;
+        height: 30px;
+        font-size: 0.6rem;
     }
 }

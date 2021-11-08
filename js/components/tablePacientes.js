@@ -34,11 +34,23 @@ export function populateTablePacientes(data) {
 
     data.map((paciente) => {
         let row = $("<tr></tr>");
+        row.attr({"id": paciente.id});
+        
         let nome = $(`<td>${paciente.nome}</td>`);
+
         let nasc = $(`<td>${formatDate(paciente.dataNascimento)}</td>`);
+
         let cadastro = $(`<td>${formatDate(paciente.dataCadastro)}</td>`);
-        let consultas = $(`<td><button>Consultas</button></td>`);
-        let acoes = $(`<td><button>Exibir</button></td>`);
+
+        let consultas = $(`<td></td>`);
+        let btnConsultas = $("<button>Consultas</button>");
+        btnConsultas.attr({"class": "btnConsultas"});
+        consultas.append(btnConsultas);
+
+        let acoes = $(`<td></td>`);
+        let btnAcoes = $("<button>Ações</button>");
+        btnAcoes.attr({"class": "btnAcoes"});
+        acoes.append(btnAcoes);
 
         row.append(nome, nasc, cadastro, consultas, acoes);
         bodyTabela.append(row);
