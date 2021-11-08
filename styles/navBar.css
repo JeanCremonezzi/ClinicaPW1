@@ -4,6 +4,11 @@ nav {
     align-items: center;
     justify-content: space-evenly;
 
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+
     height: 80px;
     background: var(--elevation1);
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);

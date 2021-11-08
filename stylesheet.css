@@ -4,15 +4,15 @@
 /* font-family: 'Quicksand', sans-serif; */
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
-@import "./styles/navBar.css";
-@import "./styles/main.css";
-@import "./styles/table.css";
+@import "styles/navBar.css";
+@import "styles/main.css";
+@import "styles/table.css";
 
 :root {
     --surface: #121212;
     --elevation1: #1d1d1d;
     --elevation2: #2b2b2b;
-    --secondary: #BC8CF2;
+    --secondary: #8cc9f2;
     --text: #FFF;
     font-size: 20px;
 }
