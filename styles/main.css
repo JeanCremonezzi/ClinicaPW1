@@ -1,5 +1,11 @@
 main {
     display: flex;
     justify-content: center;
-    padding: 100px 20px;
+    padding: 100px 0;
+}
+
+@media (max-width: 900px) {
+    main {
+        padding: 100px 5px;
+    }
 }

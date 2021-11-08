@@ -6,6 +6,7 @@
 
 @import "./styles/navBar.css";
 @import "./styles/main.css";
+@import "./styles/table.css";
 
 :root {
     --surface: #121212;

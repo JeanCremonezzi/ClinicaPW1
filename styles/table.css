@@ -1,0 +1,40 @@
+table {
+    width: 70%;
+    border-collapse: collapse;
+    font-family: 'Quicksand', sans-serif;
+}
+
+thead > tr {
+    background: var(--elevation1);
+    height: 80px;
+}
+
+tr, td, th {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+td, th {
+    width: 100%;
+}
+
+tr {
+    border-bottom: 1px solid var(--secondary);
+}
+
+table tr:first-of-type {
+    border-radius: 8px 8px 0 0;
+}
+
+table tbody > tr {
+    height: 50px;
+}
+
+@media (max-width: 900px) {
+    table {
+        width: 100%;
+        font-size: 0.8rem;
+    }
+}
