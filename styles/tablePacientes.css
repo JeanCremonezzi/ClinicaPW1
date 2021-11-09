@@ -1,29 +1,29 @@
-table#tablePacientes {
+table.tableUsuarios {
     width: 70%;
     border-collapse: collapse;
     font-family: 'Quicksand', sans-serif;
 }
 
-table#tablePacientes thead > tr {
+table.tableUsuarios thead > tr {
     background: var(--elevation2);
     height: 80px;
     border-bottom: 2px solid var(--secondary);
 }
 
-table#tablePacientes tr, table#tablePacientes td, table#tablePacientes th {
+table.tableUsuarios tr, table.tableUsuarios td, table.tableUsuarios th {
     text-align: center;
 }
 
-table#tablePacientes tbody > tr:nth-of-type(even) {
+table.tableUsuarios tbody > tr:nth-of-type(even) {
     background: var(--elevation1);
     border: 2px solid var(--secondary);
 }
 
-table#tablePacientes tbody > tr {
+table.tableUsuarios tbody > tr {
     height: 50px;
 }
 
-table#tablePacientes td > button {
+table.tableUsuarios td > button {
     border: 0;
     width: 100px;
     height: 40px;
@@ -44,12 +44,12 @@ button.btnAcoes {
 }
 
 @media (max-width: 900px) {
-    table#tablePacientes {
+    table.tableUsuarios {
         width: 100%;
         font-size: 0.8rem;
     }
 
-    table#tablePacientes td > button {
+    table.tableUsuarios td > button {
         width: 70px;
         height: 30px;
         font-size: 0.6rem;
