@@ -2,13 +2,19 @@ import {genTablePacientes, populateTablePacientes} from "./components/tablePacie
 import {getPacientes} from "./webservice/pacientes.js";
 
 $(document).ready(() => {
-	$("main").append(genTablePacientes);
+	$(".verPacientes").click((event) => {
+		event.preventDefault();
 
-	getPacientes()
-	.then((data) => {
-		populateTablePacientes(data);
-	})
-	.catch((err) => {
-		alert(`Error status ${err.status} on get pacientes`);
+		$("main").html("");
+
+		getPacientes()
+		.then((data) => {
+			$("main").append(genTablePacientes);
+			populateTablePacientes(data);
+		})
+		.catch((err) => {
+			alert(`Error status ${err.status} on get pacientes`);
+		});
+	
 	});
 });
