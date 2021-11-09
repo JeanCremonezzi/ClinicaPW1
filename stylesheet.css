@@ -9,7 +9,6 @@
 @import "styles/tablePacientes.css";
 @import "styles/overlay.css";
 @import "styles/modal.css";
-@import "styles/tableConsultas.css";
 
 :root {
     --surface: #121212;
