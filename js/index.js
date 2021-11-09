@@ -15,8 +15,8 @@ $(document).ready(() => {
 			$("main").append(genTablePacientes);
 			populateTablePacientes(data);
 		})
-		.catch((err) => {
-			alert(`Error status ${err.status} on get pacientes`);
+		.catch(() => {
+			alert("Error on get pacientes");
 		});
 	
 	});
@@ -31,8 +31,8 @@ $(document).ready(() => {
 			$("main").append(genTableMedicos);
 			populateTableMedicos(data);
 		})
-		.catch((err) => {
-			alert(`Error status ${err.status} on get medicos`);
+		.catch(() => {
+			alert("Error on get medicos");
 		});
 
 	})
