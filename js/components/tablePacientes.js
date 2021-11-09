@@ -44,7 +44,7 @@ export function populateTablePacientes(data) {
         btnConsultas.attr({"class": "btnConsultas"});
         btnConsultas.click(() => {
             genOverlay();
-            genModal();
+            genModal("paciente", paciente.id);
         });
 
         consultas.append(btnConsultas);
