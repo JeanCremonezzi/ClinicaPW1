@@ -36,7 +36,10 @@ export function populateTableMedicos(data) {
 
         let cadastro = $(`<td>${formatDate(medico.dataCadastro)}</td>`);
 
-        let especialidade = $(`<td>${medico.idEspecialidade}</td>`);
+        let nomeEspecialidade = (JSON.parse(localStorage.getItem("especialidades")))
+        .find(espec => espec.id == medico.idEspecialidade).nome;
+
+        let especialidade = $(`<td>${nomeEspecialidade}</td>`);
 
         let consultas = $(`<td></td>`);
         let btnConsultas = $("<button>Consultas</button>");

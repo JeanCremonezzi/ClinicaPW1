@@ -3,8 +3,18 @@ import {genTableMedicos, populateTableMedicos} from "./components/tableMedicos.j
 
 import {getPacientes} from "./api/pacientes.js";
 import {getMedicos} from "./api/medicos.js";
+import {getEspecialidades} from "./api/especialidades.js";
 
 $(document).ready(() => {
+
+	getEspecialidades()
+	.then((data) => {
+		localStorage.setItem("especialidades", JSON.stringify(data));
+	})
+	.catch(() => {
+		alert("Error on get especialidades");
+	});
+
 	$(".verPacientes").click((event) => {
 		event.preventDefault();
 
