@@ -5,6 +5,7 @@
     background: white;
     border-radius: 15px;
     color: #121212;
+    overflow: auto;
 
     display: flex;
     justify-content: center;

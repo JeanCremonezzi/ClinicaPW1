@@ -1,0 +1,51 @@
+#tableConsultas {
+    width: 100%;
+    border-collapse: collapse;
+    border: 0;
+}
+
+#tableConsultas thead {
+    height: 70px;
+    background: var(--surface);
+    color: var(--text);
+}
+
+#tableConsultas tbody > tr {
+    height: 50px;
+}
+
+#tableConsultas tbody > tr:nth-of-type(even) {
+    background: #2b2b2b42;
+}
+
+#tableConsultas tr > td:first-of-type, #tableConsultas tr > th:first-of-type {
+    border-radius: 8px 0 0 8px;
+}
+
+#tableConsultas tr > td:last-of-type, #tableConsultas tr > th:last-of-type {
+    border-radius: 0 8px 8px 0;
+}
+
+#tableConsultas tr button {
+    border: 0;
+    cursor: pointer;
+    height: 40px;
+    width: 70%;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: bolder;
+    background: #e74e3d;
+    color: var(--text);
+}
+
+@media (max-width: 900px) {
+    table.tableUsuarios {
+        width: 100%;
+        font-size: 0.8rem;
+    }
+
+    #tableConsultas td button {
+        width: 90%;
+        font-size: 0.6rem;
+    }
+}
