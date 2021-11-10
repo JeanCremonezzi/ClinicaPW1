@@ -1,9 +1,9 @@
-import {genModal} from "./modal.js";
-import {genOverlay} from "./overlay.js";
+import { genModal } from "./modal.js";
+import { genOverlay } from "./overlay.js";
 
-import {formatDate} from "../tools/formatDate.js";
+import { formatDate } from "../tools/formatDate.js";
 
-export function genTableMedicos() {
+export function genTableMedicos(data) {
     let table = $("<table></table>");
     table.attr({"id": "tableMedicos"});
     table.attr({"class": "tableUsuarios"});
@@ -20,13 +20,13 @@ export function genTableMedicos() {
     row.append(celNome, celCadastro, celEspecialidade, celConcultas, celAcoes);
     head.append(row);
     table.append(head);
-    table.append("<tbody></tbody>");
+    table.append(genBodyMedicos(data));
 
     return table;
 };
 
-export function populateTableMedicos(data) {
-    let bodyTabela = $("table#tableMedicos tbody");
+function genBodyMedicos(data) {
+    let bodyTabela = $("<tbody></tbody>");
 
     data.map((medico) => {
         let row = $("<tr></tr>");
@@ -58,4 +58,6 @@ export function populateTableMedicos(data) {
         row.append(nome, cadastro, especialidade, consultas, acoes);
         bodyTabela.append(row);
     });
+
+    return bodyTabela;
 };

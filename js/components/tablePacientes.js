@@ -1,10 +1,10 @@
-import {genModal} from "./modal.js";
-import {genOverlay} from "./overlay.js";
+import { genModal } from "./modal.js";
+import { genOverlay } from "./overlay.js";
 
-import {formatDate} from "../tools/formatDate.js";
+import { formatDate } from "../tools/formatDate.js";
 
 /* Gera tabela de pacientes */
-export function genTablePacientes() {
+export function genTablePacientes(data) {
     let table = $("<table></table>");
     table.attr({"id": "tablePacientes"});
     table.attr({"class": "tableUsuarios"});
@@ -21,13 +21,14 @@ export function genTablePacientes() {
     row.append(celNome, celNasc, celCadastro, celConcultas, celAcoes);
     head.append(row);
     table.append(head);
-    table.append("<tbody></tbody>");
+
+    table.append(genBodyPacientes(data));
 
     return table;
 };
 
-export function populateTablePacientes(data) {
-    let bodyTabela = $("table#tablePacientes tbody");
+function genBodyPacientes(data) {
+    let bodyTabela = $("<tbody></tbody>");
 
     data.map((paciente) => {
         let row = $("<tr></tr>");
@@ -56,4 +57,6 @@ export function populateTablePacientes(data) {
         row.append(nome, nasc, cadastro, consultas, acoes);
         bodyTabela.append(row);
     });
+
+    return bodyTabela;
 };

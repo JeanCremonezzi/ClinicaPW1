@@ -1,6 +1,6 @@
 import { formatDate } from "../tools/formatDate.js";
 
-export function genTableConsultas() {
+export function genTableConsultas(data) {
     let table = $("<table></table>");
     table.attr({"id": "tableConsultas"});
     
@@ -15,13 +15,14 @@ export function genTableConsultas() {
     row.append(celPaciente, celMedico, celData, celCancelar);
     head.append(row);
     table.append(head);
-    table.append("<tbody></tbody>");
+
+    table.append(genBodyConsultas(data));
 
     return table;
 }
 
-export function populateTableConsultas(data) {
-    let bodyTabela = $("table#tableConsultas tbody");
+function genBodyConsultas(data) {
+    let bodyTabela = $("<tbody></tbody>");
 
     data.map((consulta) => {
         let row = $("<tr></tr>");
@@ -44,4 +45,6 @@ export function populateTableConsultas(data) {
         row.append(paciente, medico, dataConsulta, cancelar);
         bodyTabela.append(row);
     });
+
+    return bodyTabela;
 }

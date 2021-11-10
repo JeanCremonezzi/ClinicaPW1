@@ -1,4 +1,3 @@
-/* get pacientes */
 export function getPacientes() {
 	return $.ajax({
 		method: "GET",
