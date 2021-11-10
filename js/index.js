@@ -26,6 +26,7 @@ $(document).ready(() => {
 			.done((data) => {
 				$("main").append(genTablePacientes());
 				populateTablePacientes(data);
+				localStorage.setItem("pacientes", JSON.stringify(data));
 			})
 			.catch(() => {
 				alert("Error on get pacientes");
@@ -42,6 +43,7 @@ $(document).ready(() => {
 			.done((data) => {
 				$("main").append(genTableMedicos());
 				populateTableMedicos(data);
+				localStorage.setItem("medicos", JSON.stringify(data));
 			})
 			.catch(() => {
 				alert("Error on get medicos");
