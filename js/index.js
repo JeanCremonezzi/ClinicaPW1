@@ -24,7 +24,7 @@ $(document).ready(() => {
 
 		getPacientes()
 			.then((data) => {
-				$("main").append(genTablePacientes);
+				$("main").append(genTablePacientes());
 				populateTablePacientes(data);
 			})
 			.catch(() => {
@@ -40,7 +40,7 @@ $(document).ready(() => {
 
 		getMedicos()
 			.then((data) => {
-				$("main").append(genTableMedicos);
+				$("main").append(genTableMedicos());
 				populateTableMedicos(data);
 			})
 			.catch(() => {

@@ -31,7 +31,6 @@ export function populateTablePacientes(data) {
 
     data.map((paciente) => {
         let row = $("<tr></tr>");
-        row.attr({"id": paciente.id});
 
         let nome = $(`<td>${paciente.nome}</td>`);
         
@@ -49,7 +48,7 @@ export function populateTablePacientes(data) {
 
         consultas.append(btnConsultas);
 
-        let acoes = $(`<td></td>`);
+        let acoes = $("<td></td>");
         let btnAcoes = $("<button>Ações</button>");
         btnAcoes.attr({"class": "btnAcoes"});
         acoes.append(btnAcoes);

@@ -1,5 +1,7 @@
 import { getConsultas } from "../api/consultas.js";
 
+import { genTableConsultas, populateTableConsultas } from "./tableConsultas.js";
+
 export function genModal(type, id) {
     let modal = $("<div></div>");
     modal.attr({"class": "modal"});
@@ -31,10 +33,14 @@ export function genModal(type, id) {
                 break;
         };
 
-        console.log(consultas);
-    });
+        if (consultas.length > 0) {
+            modal.append(genTableConsultas());
+            populateTableConsultas(consultas);
 
-    modal.html("<p>Nenhuma consulta encontrada!</p>");
+        } else {
+            modal.html("<p>Nenhuma consulta encontrada!</p>");
+        }
+    });
 
     $("body").prepend(modal);
 }
