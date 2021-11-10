@@ -27,9 +27,14 @@ function genBodyConsultas(data) {
     data.map((consulta) => {
         let row = $("<tr></tr>");
 
-        let paciente = $(`<td>${consulta.idPaciente}</td>`);
-        
-        let medico = $(`<td>${consulta.idMedico}</td>`);
+
+        let pacienteNome = (JSON.parse(localStorage.getItem("pacientes")))
+        .find(pac => pac.id == consulta.idPaciente).nome;
+        let paciente = $(`<td>${pacienteNome}</td>`);
+
+        let medicoNome = (JSON.parse(localStorage.getItem("medicos")))
+        .find(med => med.id == consulta.idMedico).nome;
+        let medico = $(`<td>${medicoNome}</td>`);
 
         let dataConsulta = $(`<td>${formatDate(consulta.data)}</td>`);
 
