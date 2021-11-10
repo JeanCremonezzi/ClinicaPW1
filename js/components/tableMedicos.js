@@ -4,18 +4,18 @@ import {genOverlay} from "./overlay.js";
 import {formatDate} from "../tools/formatDate.js";
 
 export function genTableMedicos() {
-    let table = $("<table></>");
+    let table = $("<table></table>");
     table.attr({"id": "tableMedicos"});
     table.attr({"class": "tableUsuarios"});
     
-    let head = $("<thead></>");
-    let row = $("<tr></>");
+    let head = $("<thead></thead>");
+    let row = $("<tr></tr>");
 
-    let celNome = $("<th>Nome</>");
-    let celCadastro = $("<th>Cadastro em</>");
-    let celEspecialidade = $("<th>Especialidade</>");
-    let celConcultas = $("<th>Consultas</>");
-    let celAcoes = $("<th>Ações</>");
+    let celNome = $("<th>Nome</th>");
+    let celCadastro = $("<th>Cadastro em</th>");
+    let celEspecialidade = $("<th>Especialidade</th>");
+    let celConcultas = $("<th>Consultas</th>");
+    let celAcoes = $("<th>Ações</th>");
 
     row.append(celNome, celCadastro, celEspecialidade, celConcultas, celAcoes);
     head.append(row);

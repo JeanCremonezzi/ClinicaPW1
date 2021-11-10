@@ -5,18 +5,18 @@ import {formatDate} from "../tools/formatDate.js";
 
 /* Gera tabela de pacientes */
 export function genTablePacientes() {
-    let table = $("<table></>");
+    let table = $("<table></table>");
     table.attr({"id": "tablePacientes"});
     table.attr({"class": "tableUsuarios"});
     
-    let head = $("<thead></>");
-    let row = $("<tr></>");
+    let head = $("<thead></table>");
+    let row = $("<tr></tr>");
 
-    let celNome = $("<th>Nome</>");
-    let celNasc = $("<th>Nascimento</>");
-    let celCadastro = $("<th>Cadastro em</>");
-    let celConcultas = $("<th>Consultas</>");
-    let celAcoes = $("<th>Ações</>");
+    let celNome = $("<th>Nome</th>");
+    let celNasc = $("<th>Nascimento</th>");
+    let celCadastro = $("<th>Cadastro em</th>");
+    let celConcultas = $("<th>Consultas</th>");
+    let celAcoes = $("<th>Ações<th>");
 
     row.append(celNome, celNasc, celCadastro, celConcultas, celAcoes);
     head.append(row);
