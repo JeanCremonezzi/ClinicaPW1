@@ -9,7 +9,7 @@ $(document).ready(() => {
 
 	/** Armazena especialidades no localStorage */
 	getEspecialidades()
-		.done((data) => {
+		.then((data) => {
 			localStorage.setItem("especialidades", JSON.stringify(data));
 		})
 		.catch(() => {
@@ -23,7 +23,7 @@ $(document).ready(() => {
 		$("main").html("");
 
 		getPacientes()
-			.done((data) => {
+			.then((data) => {
 				$("main").append(genTablePacientes());
 				populateTablePacientes(data);
 				localStorage.setItem("pacientes", JSON.stringify(data));
@@ -40,7 +40,7 @@ $(document).ready(() => {
 		$("main").html("");
 
 		getMedicos()
-			.done((data) => {
+			.then((data) => {
 				$("main").append(genTableMedicos());
 				populateTableMedicos(data);
 				localStorage.setItem("medicos", JSON.stringify(data));

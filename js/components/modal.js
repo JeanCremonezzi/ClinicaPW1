@@ -7,7 +7,7 @@ export function genModal(type, id) {
     modal.attr({"class": "modal"});
 
     getConsultas()
-    .done((data) => {
+    .then((data) => {
 
         let consultas;
 
@@ -40,10 +40,6 @@ export function genModal(type, id) {
         } else {
             modal.html("<p>Nenhuma consulta encontrada!</p>");
         }
-        
-    }).catch(() => {
-        alert("Error on get consultas");
-        $(".overlay").trigger("click");
     });
 
     $("body").prepend(modal);
