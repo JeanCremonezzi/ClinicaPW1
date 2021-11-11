@@ -1,3 +1,7 @@
+import { postConsulta } from "../api/consultas.js";
+
+import { setAllData } from "../tools/setLocalStorage.js";
+
 export function formConsulta() {
 	let form = $("<form></form>");
 	form.attr({ id: "formConsulta" });
@@ -23,7 +27,28 @@ export function formConsulta() {
 
     button.click((event) => {
         event.preventDefault();
-		alert("enviar");
+
+		const dados = {
+			"idPaciente": $("#selectPacientes option:selected").val(),
+			"idMedico": $("#selectMedicos option:selected").val(),
+			"data": `${$("#inputDia").val()} ${$("#inputHorario").val()}`
+		};
+
+		postConsulta(dados)
+		.done((resp) => {
+			
+			if (resp.status == "Erro") {
+				alert("Ocorreu um erro ao cadastrar consulta. Tente novamente");
+
+			} else {
+				alert("Consulta cadastrada");
+				setAllData();
+				$(".novaConsulta").trigger("click");
+			};
+
+		}).catch(() => {
+			alert("Ocorreu um erro ao cadastrar consulta. Tente novamente");
+		});
     });
 
 	form.append(rowUsuarios, rowData, button);

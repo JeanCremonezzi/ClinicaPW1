@@ -58,6 +58,7 @@ form#formConsulta button {
 }
 
 .btnEnabled {
-    background-color: #B4FE98;
+    background: #B4FE98;
     cursor: pointer;
+    transition: background 0.7s;
 }
