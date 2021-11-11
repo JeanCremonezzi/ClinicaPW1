@@ -1,5 +1,3 @@
-import { formatDate } from "../tools/formatDate.js";
-
 export function formConsulta() {
 	let form = $("<form></form>");
 	form.attr({ id: "formConsulta" });
@@ -21,10 +19,11 @@ export function formConsulta() {
 
     let button = $("<button>Enviar</button>");
     button.attr({"disabled": "disabled"});
+    button.attr({"class": "btnEnviarConsultas"});
 
     button.click((event) => {
         event.preventDefault();
-        alert("Enviar");
+		alert("enviar");
     });
 
 	form.append(rowUsuarios, rowData, button);
@@ -59,8 +58,12 @@ function genColMedicos() {
 
 		select.append(option);
 	});
-	div.append(label, select);
 
+	select.change(() => {
+		checkSelects();
+	});
+
+	div.append(label, select);
 	return div;
 }
 
@@ -93,6 +96,11 @@ function genColPacientes() {
 		select.append(option);
 
 	});
+
+	select.change(() => {
+		checkSelects();
+	});
+
 	div.append(label, select);
 
 	return div;
@@ -139,4 +147,13 @@ function genColHorario() {
     div.append(label, input);
 
 	return div;
+}
+
+function checkSelects() {
+
+	if ($("#selectMedicos option:selected").val() != "" && $("#selectPacientes option:selected").val() != "") {
+		$(".btnEnviarConsultas")
+		.attr({"class": "btnEnabled"})
+		.prop("disabled", false);
+	}
 }
