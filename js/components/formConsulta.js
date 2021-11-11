@@ -1,3 +1,5 @@
+import { formatDate } from "../tools/formatDate.js";
+
 export function formConsulta() {
 	let form = $("<form></form>");
 	form.attr({ id: "formConsulta" });
@@ -18,6 +20,7 @@ export function formConsulta() {
 	rowData.append(genColHorario());
 
     let button = $("<button>Enviar</button>");
+    button.attr({"disabled": "disabled"});
 
     button.click((event) => {
         event.preventDefault();
@@ -125,11 +128,11 @@ function genColHorario() {
 	label.attr({ "for": "inputHorario" });
 
     let input = $("<input>");
-    const horario = new Date().toISOString().split("T")[1].slice(0, 5);
+    const hoje = new Date();
     input.attr({
         "type": "time",
         "id": "inputHorario",
-        "value": horario,
+        "value": `${hoje.getHours()}:${hoje.getMinutes()}`,
         "required": "required"
     });
 
