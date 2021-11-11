@@ -6,10 +6,11 @@
 
 @import "styles/navBar.css";
 @import "styles/main.css";
-@import "styles/tableUsuarios.css";
 @import "styles/overlay.css";
 @import "styles/modal.css";
+@import "styles/tableUsuarios.css";
 @import "styles/tableConsultas.css";
+@import "styles/formConsulta.css";
 
 :root {
     --surface: #121212;
