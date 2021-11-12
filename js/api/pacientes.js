@@ -5,3 +5,12 @@ export function getPacientes() {
 		dataType: "json"
 	});
 };
+
+export function postPaciente(data) {
+	return $.ajax({
+		method: "POST",
+		url: "https://tiagoifsp.ddns.net/clinicaMedica/pacientes.php",
+		dataType: "json",
+		data: data
+	});
+};

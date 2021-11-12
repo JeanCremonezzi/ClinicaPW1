@@ -1,3 +1,7 @@
+import { postPaciente } from "../api/pacientes.js";
+
+import { setAllData } from "../tools/setLocalStorage.js";
+
 export function formPaciente() {
     let form = $("<form></form>");
 	form.attr({ id: "formPaciente" });
@@ -18,7 +22,27 @@ export function formPaciente() {
 
     button.click((event) => {
         event.preventDefault();
-        alert("ENVIAR PACIENTE");
+
+        const dados = {
+			"nome": $("#inputNome").val(),
+			"dataNascimento": `${$("#inputNasc").val()}`
+		};
+
+        postPaciente(dados)
+		.done((resp) => {
+			
+			if (resp.status == "Erro") {
+				alert("Ocorreu um erro ao cadastrar paciente. Tente novamente");
+
+			} else {
+				alert("Paciente cadastrado");
+				setAllData();
+				$(".addPacientes").trigger("click");
+			};
+
+		}).catch(() => {
+			alert("Ocorreu um erro ao cadastrar paciente. Tente novamente");
+		});
     });
 
 	form.append(row, button);
