@@ -1,4 +1,6 @@
-//import { setAllData } from "../tools/setLocalStorage.js";
+import { postMedico } from "../api/medicos.js";
+
+import { setAllData } from "../tools/setLocalStorage.js";
 
 export function formMedico() {
     let form = $("<form></form>");
@@ -26,7 +28,22 @@ export function formMedico() {
 			"idEspecialidade": `${$("#selectEspec option:selected").val()}`
 		};
 
-        console.log(dados);
+        postMedico(dados)
+		.done((resp) => {
+
+			if (resp.status == "Erro") {
+				alert("Ocorreu um erro ao cadastrar médico. Tente novamente");
+
+			} else {
+				alert("Médico cadastrado");
+				setAllData();
+				$(".addMedico").trigger("click");
+			};
+
+		}).catch(() => {
+			alert("Ocorreu um erro ao cadastrar médico. Tente novamente");
+		});
+
     });
 
 	form.append(row, button);
