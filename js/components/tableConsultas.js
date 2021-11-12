@@ -1,7 +1,7 @@
-import { formatDate } from "../tools/formatDate.js";
-import { setAllData } from "../tools/setLocalStorage.js";
+//import { deleteConsulta } from "../api/consultas.js";
 
-import { deleteConsulta } from "../api/consultas.js";
+import { formatDate } from "../tools/formatDate.js";
+//import { setAllData } from "../tools/setLocalStorage.js";
 
 export function genTableConsultas(data) {
     let table = $("<table></table>");
