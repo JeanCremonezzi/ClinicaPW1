@@ -1,6 +1,7 @@
 import { genTablePacientes } from "./components/tablePacientes.js";
 import { genTableMedicos } from "./components/tableMedicos.js";
 import { formConsulta } from "./components/formConsulta.js";
+import { formPaciente } from "./components/formPaciente.js";
 
 import { setAllData } from "./tools/setLocalStorage.js";
 
@@ -25,6 +26,11 @@ $(document).ready(() => {
 	$(".novaConsulta").click(() => {
 		$("main").html("");
 		$("main").append(formConsulta());
+	});
+
+	$(".addPacientes").click(() => {
+		$("main").html("");
+		$("main").append(formPaciente());
 	});
 
 });

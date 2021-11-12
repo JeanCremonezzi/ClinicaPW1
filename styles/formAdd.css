@@ -1,4 +1,4 @@
-form#formConsulta {
+form.formAdd {
     font-family: 'Mukta', sans-serif;
     display: flex;
     flex-direction: column;
@@ -9,7 +9,7 @@ form#formConsulta {
     padding: 5px 10px;
 }
 
-form#formConsulta .input-row {
+form.formAdd .input-row {
     display: grid;
     grid-template-columns: 6fr 6fr;
     gap: 1rem;
@@ -17,23 +17,23 @@ form#formConsulta .input-row {
     margin-top: 20px;
 }
 
-form#formConsulta .input-row .input-col {
+form.formAdd .input-row .input-col {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
-form#formConsulta .input-row .input-col:last-of-type {
+form.formAdd .input-row .input-col:last-of-type {
     justify-self: end;
     align-items: flex-end;
 }
 
-form#formConsulta .input-row label {
+form.formAdd .input-row label {
     font-size: 0.8rem;
     font-weight: bolder;
 }
 
-form#formConsulta input, select {
+form.formAdd input, select {
     font-size: 16px;
     text-align: center;
     margin-top: 5px;
@@ -45,7 +45,7 @@ form#formConsulta input, select {
     background: white;
 }
 
-form#formConsulta button {
+form.formAdd button {
     margin-top: 20px;
     border: 0;
     height: 40px;

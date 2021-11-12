@@ -5,6 +5,7 @@ import { setAllData } from "../tools/setLocalStorage.js";
 export function formConsulta() {
 	let form = $("<form></form>");
 	form.attr({ id: "formConsulta" });
+	form.attr({ class: "formAdd" });
 
 	let header = $("<h1>Nova Consulta</h1>");
 	form.append(header);
@@ -85,7 +86,7 @@ function genColMedicos() {
 	});
 
 	select.change(() => {
-		checkSelects();
+		checkFields();
 	});
 
 	div.append(label, select);
@@ -123,7 +124,7 @@ function genColPacientes() {
 	});
 
 	select.change(() => {
-		checkSelects();
+		checkFields();
 	});
 
 	div.append(label, select);
@@ -162,10 +163,16 @@ function genColHorario() {
 
     let input = $("<input>");
     const hoje = new Date();
+
+	let hora = `${hoje.getHours()}:${(hoje.getMinutes()).toLocaleString("en-US", {
+		minimumIntegerDigits: 2,
+		useGrouping: false		
+	})}`;
+
     input.attr({
         "type": "time",
         "id": "inputHorario",
-        "value": `${hoje.getHours()}:${hoje.getMinutes()}`,
+        "value": hora,
         "required": "required"
     });
 
@@ -174,11 +181,16 @@ function genColHorario() {
 	return div;
 }
 
-function checkSelects() {
+function checkFields() {
 
 	if ($("#selectMedicos option:selected").val() != "" && $("#selectPacientes option:selected").val() != "") {
 		$(".btnEnviarConsultas")
-		.attr({"class": "btnEnabled"})
+        .addClass("btnEnabled")
 		.prop("disabled", false);
-	}
+
+	} else {
+        $(".btnEnviarConsultas")
+        .removeClass("btnEnabled")
+        .prop("disabled", true);
+    }
 }
