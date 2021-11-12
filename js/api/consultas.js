@@ -13,4 +13,11 @@ export function postConsulta(data) {
 		dataType: "json",
 		data: data
 	});
-}
+};
+
+export function deleteConsulta(id) {
+	return $.ajax({
+		method: "DELETE",
+		url: `https://tiagoifsp.ddns.net/clinicaMedica/consultas.php/${id}`
+	});
+};
