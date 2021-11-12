@@ -24,7 +24,7 @@ export function formConsulta() {
 
     let button = $("<button>Enviar</button>");
     button.attr({"disabled": "disabled"});
-    button.attr({"class": "btnEnviarConsultas"});
+    button.attr({"id": "btnEnviarConsultas"});
 
     button.click((event) => {
         event.preventDefault();
@@ -37,7 +37,7 @@ export function formConsulta() {
 
 		postConsulta(dados)
 		.done((resp) => {
-			
+
 			if (resp.status == "Erro") {
 				alert("Ocorreu um erro ao cadastrar consulta. Tente novamente");
 
@@ -184,12 +184,12 @@ function genColHorario() {
 function checkFields() {
 
 	if ($("#selectMedicos option:selected").val() != "" && $("#selectPacientes option:selected").val() != "") {
-		$(".btnEnviarConsultas")
+		$("#btnEnviarConsultas")
         .addClass("btnEnabled")
 		.prop("disabled", false);
 
 	} else {
-        $(".btnEnviarConsultas")
+        $("#btnEnviarConsultas")
         .removeClass("btnEnabled")
         .prop("disabled", true);
     }

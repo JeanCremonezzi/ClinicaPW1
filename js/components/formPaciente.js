@@ -18,7 +18,7 @@ export function formPaciente() {
 
     let button = $("<button>Enviar</button>");
     button.attr({"disabled": "disabled"});
-    button.attr({"class": "btnEnviarPaciente"});
+    button.attr({"id": "btnEnviarPaciente"});
 
     button.click((event) => {
         event.preventDefault();
@@ -102,12 +102,12 @@ function genColNasc() {
 function checkFields() {
 
 	if ($("#inputNome").val() != "" && $("#inputNasc").val() != "") {
-        $(".btnEnviarPaciente")
+        $("#btnEnviarPaciente")
         .addClass("btnEnabled")
         .prop("disabled", false);
         
     } else {
-        $(".btnEnviarPaciente")
+        $("#btnEnviarPaciente")
         .removeClass("btnEnabled")
         .prop("disabled", true);
     }

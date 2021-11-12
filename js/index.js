@@ -2,6 +2,7 @@ import { genTablePacientes } from "./components/tablePacientes.js";
 import { genTableMedicos } from "./components/tableMedicos.js";
 import { formConsulta } from "./components/formConsulta.js";
 import { formPaciente } from "./components/formPaciente.js";
+import { formMedico } from "./components/formMedico.js";
 
 import { setAllData } from "./tools/setLocalStorage.js";
 
@@ -31,6 +32,11 @@ $(document).ready(() => {
 	$(".addPacientes").click(() => {
 		$("main").html("");
 		$("main").append(formPaciente());
+	});
+
+	$(".addMedicos").click(() => {
+		$("main").html("");
+		$("main").append(formMedico());
 	});
 
 });
