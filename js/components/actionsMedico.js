@@ -1,5 +1,6 @@
 import { putMedico } from "../api/medicos.js";
 import { deleteMedico } from "../api/medicos.js";
+import { deleteConsulta } from "../api/consultas.js";
 
 import { setAllData } from "../tools/setLocalStorage.js";
 
@@ -58,22 +59,41 @@ export function actionsMedico(id) {
     buttonDelete.click((event) => {
         event.preventDefault();
 
-        deleteMedico(id)
-        .done((resp) => {
+        let consultasMedico = JSON.parse(localStorage.getItem("consultas")).filter(consulta => consulta.idMedico == id);
+        
+        Promise.all(consultasMedico.map((consulta) => {
+            deleteConsulta(consulta.id)
+            .done((resp) => {
 
-            if (resp.status == "Erro") {
-				alert("Ocorreu um erro ao deletar médico. Tente novamente");
+                if (resp.status == "Erro") {
+                    alert("Ocorreu um erro ao deletar consultas. Tente novamente");
+                    return;
+                };
+            })
+            .catch(() => {
+				alert("Ocorreu um erro ao deletar consultas. Tente novamente");
+                return;
+            })
 
-			} else {
-                setAllData().then(() => {
-				    alert("Médico deletado");
-				    $(".verMedicos").trigger("click");
-                });
-			};
+        })).then(() => {
 
-        }).catch(() => {
-			alert("Ocorreu um erro ao deletar médico. Tente novamente");
-		});
+            deleteMedico(id)
+            .done((resp) => {
+
+                if (resp.status == "Erro") {
+                    alert("Ocorreu um erro ao deletar médico. Tente novamente");
+    
+                } else {
+                    setAllData().then(() => {
+                        alert("Médico deletado");
+                        $(".verMedicos").trigger("click");
+                    });
+                };
+
+            }).catch(() => {
+                alert("Ocorreu um erro ao deletar médico. Tente novamente");
+            }); 
+        });
     });
 
 	form.append(row, buttonEdit, buttonDelete);
