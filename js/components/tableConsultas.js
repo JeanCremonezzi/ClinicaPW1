@@ -1,7 +1,7 @@
-//import { deleteConsulta } from "../api/consultas.js";
+import { deleteConsulta } from "../api/consultas.js";
 
 import { formatDate } from "../tools/formatDate.js";
-//import { setAllData } from "../tools/setLocalStorage.js";
+import { setAllData } from "../tools/setLocalStorage.js";
 
 export function genTableConsultas(data) {
     let table = $("<table></table>");
@@ -46,22 +46,21 @@ function genBodyConsultas(data) {
         btnCancelar.attr({"class": "btnCancelar"});
         btnCancelar.click(() => {
 
-            alert("Cancelar consulta");
-
-            /*deleteConsulta(consulta.id)
+            deleteConsulta(consulta.id)
             .done((resp) => {
 
                 if (resp.status == "Erro") {
                     alert("Ocorreu um erro ao cadastrar consulta. Tente novamente");
-                    console.log(resp);
-                    
+
                 } else {
+                    alert("Consulta cancelada")
                     setAllData();
+                    $(btnCancelar).parent().parent().remove();
                 };
             })
             .catch(() => {
 				alert("Ocorreu um erro ao deletar consulta. Tente novamente");
-            })*/
+            })
         });
 
         cancelar.append(btnCancelar);
