@@ -23,3 +23,10 @@ export function putMedico(data) {
 		data: data
 	});
 };
+
+export function deleteMedico(id) {
+	return $.ajax({
+		method: "DELETE",
+		url: `https://tiagoifsp.ddns.net/clinicaMedica/medicos.php?id=${id}`
+	});
+};

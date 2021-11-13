@@ -1,4 +1,5 @@
 import { putMedico } from "../api/medicos.js";
+import { deleteMedico } from "../api/medicos.js";
 
 import { setAllData } from "../tools/setLocalStorage.js";
 
@@ -57,7 +58,22 @@ export function actionsMedico(id) {
     buttonDelete.click((event) => {
         event.preventDefault();
 
-        alert("DELETAR MÉDICO");
+        deleteMedico(id)
+        .done((resp) => {
+
+            if (resp.status == "Erro") {
+				alert("Ocorreu um erro ao deletar médico. Tente novamente");
+
+			} else {
+                setAllData().then(() => {
+				    alert("Médico deletado");
+				    $(".verMedicos").trigger("click");
+                });
+			};
+
+        }).catch(() => {
+			alert("Ocorreu um erro ao deletar médico. Tente novamente");
+		});
     });
 
 	form.append(row, buttonEdit, buttonDelete);
