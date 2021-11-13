@@ -37,7 +37,7 @@ export function formMedico() {
 			} else {
                 setAllData().then(() => {
 				    alert("Médico cadastrado");
-				    $(".addMedico").trigger("click");
+				    $(".addMedicos").trigger("click");
                 });
 			};
 
