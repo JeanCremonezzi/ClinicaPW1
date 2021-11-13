@@ -1,5 +1,6 @@
 import { putPaciente } from "../api/pacientes.js";
 import { deletePaciente } from "../api/pacientes.js";
+import { deleteConsulta } from "../api/consultas.js";
 
 import { setAllData } from "../tools/setLocalStorage.js";
 
@@ -58,22 +59,41 @@ export function actionsPaciente(id) {
     buttonDelete.click((event) => {
         event.preventDefault();
 
-        deletePaciente(id)
-        .done((resp) => {
+        let consultasPaciente = JSON.parse(localStorage.getItem("consultas")).filter(consulta => consulta.idPaciente == id);
 
-            if (resp.status == "Erro") {
-				alert("Ocorreu um erro ao deletar paciente. Tente novamente");
+        Promise.all(consultasPaciente.map((consulta) => {
+            deleteConsulta(consulta.id)
+            .done((resp) => {
 
-			} else {
-                setAllData().then(() => {
-				    alert("Paciente deletado");
-				    $(".verPacientes").trigger("click");
-                });
-			};
+                if (resp.status == "Erro") {
+                    alert("Ocorreu um erro ao deletar consultas. Tente novamente");
+                    return;
+                };
+            })
+            .catch(() => {
+				alert("Ocorreu um erro ao deletar consultas. Tente novamente");
+                return;
+            })
 
-        }).catch(() => {
-			alert("Ocorreu um erro ao deletar paciente. Tente novamente");
-		});    
+        })).then(() => {
+
+            deletePaciente(id)
+            .done((resp) => {
+    
+                if (resp.status == "Erro") {
+                    alert("Ocorreu um erro ao deletar paciente. Tente novamente");
+    
+                } else {
+                    setAllData().then(() => {
+                        alert("Paciente deletado");
+                        $(".verPacientes").trigger("click");
+                    });
+                };
+    
+            }).catch(() => {
+                alert("Ocorreu um erro ao deletar paciente. Tente novamente");
+            });        
+        });
     });
 
 	form.append(row, buttonEdit, buttonDelete);
