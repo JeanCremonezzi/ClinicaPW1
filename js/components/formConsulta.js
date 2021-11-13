@@ -42,9 +42,11 @@ export function formConsulta() {
 				alert("Ocorreu um erro ao cadastrar consulta. Tente novamente");
 
 			} else {
-				alert("Consulta cadastrada");
-				setAllData();
-				$(".novaConsulta").trigger("click");
+				setAllData().then(() => {
+					alert("Consulta cadastrada");
+				
+					$(".novaConsulta").trigger("click");	
+				});
 			};
 
 		}).catch(() => {

@@ -35,9 +35,10 @@ export function formPaciente() {
 				alert("Ocorreu um erro ao cadastrar paciente. Tente novamente");
 
 			} else {
-				alert("Paciente cadastrado");
-				setAllData();
-				$(".addPacientes").trigger("click");
+                setAllData().then(() => {
+                    alert("Paciente cadastrado");
+                    $(".addPacientes").trigger("click");    
+                });
 			};
 
 		}).catch(() => {

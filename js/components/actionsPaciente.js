@@ -8,10 +8,10 @@ export function actionsPaciente(id) {
     .find(paci => paci.id == id);
 
     let form = $("<form></form>");
-	form.attr({ id: "formPaciente" });
+	form.attr({ id: "formEditPaciente" });
 	form.attr({ class: "form" });
 
-	let header = $("<h1>Novo Paciente</h1>");
+	let header = $("<h1>Editar Paciente</h1>");
 	form.append(header);
 
 	let row = $("<div></div>");
@@ -22,7 +22,7 @@ export function actionsPaciente(id) {
 
     let buttonEdit = $("<button>Editar</button>");
     buttonEdit.attr({"disabled": "disabled"});
-    buttonEdit.attr({"id": "btnEnviarPaciente"});
+    buttonEdit.attr({"id": "btnEditarPaciente"});
 
     buttonEdit.click((event) => {
         event.preventDefault();

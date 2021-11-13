@@ -56,7 +56,7 @@ function genBodyPacientes(data) {
         btnAcoes.click(() => {
             $("main").html("");
             $("main").append(actionsPaciente(paciente.id));
-        })
+        });
         acoes.append(btnAcoes);
 
         row.append(nome, nasc, cadastro, consultas, acoes);

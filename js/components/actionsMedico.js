@@ -1,34 +1,39 @@
-import { postMedico } from "../api/medicos.js";
+/*import { putMedico } from "../api/medicos.js";
 
-import { setAllData } from "../tools/setLocalStorage.js";
+import { setAllData } from "../tools/setLocalStorage.js";*/
 
-export function formMedico() {
+export function actionsMedico(id) {
+
+    let medico = JSON.parse(localStorage.getItem("medicos"))
+    .find(med => med.id == id);
+
     let form = $("<form></form>");
-	form.attr({ id: "formMedico" });
+	form.attr({ id: "formEditMedico" });
 	form.attr({ class: "form" });
 
-	let header = $("<h1>Novo Médico</h1>");
+	let header = $("<h1>Editar Médico</h1>");
 	form.append(header);
 
 	let row = $("<div></div>");
 	row.attr({ class: "input-row" });
 
-    row.append(genColName());
-    row.append(genColEspec());
+    row.append(genColName(medico));
+    row.append(genColEspec(medico));
 
-    let button = $("<button>Enviar</button>");
-    button.attr({"disabled": "disabled"});
-    button.attr({"id": "btnEnviarMedico"});
+    let buttonEdit = $("<button>Enviar</button>");
+    buttonEdit.attr({"disabled": "disabled"});
+    buttonEdit.attr({"id": "btnEditarMedico"});
 
-    button.click((event) => {
+    buttonEdit.click((event) => {
         event.preventDefault();
 
         const dados = {
+            "id": id,
 			"nome": $("#inputNome").val(),
 			"idEspecialidade": `${$("#selectEspec option:selected").val()}`
 		};
 
-        postMedico(dados)
+        /*put(dados)
 		.done((resp) => {
 
 			if (resp.status == "Erro") {
@@ -43,15 +48,24 @@ export function formMedico() {
 
 		}).catch(() => {
 			alert("Ocorreu um erro ao cadastrar médico. Tente novamente");
-		});
+		});*/
 
     });
 
-	form.append(row, button);
+    let buttonDelete = $("<button>Deletar</button>");
+    buttonDelete.attr({"class": "btnDeleteUser"});
+
+    buttonDelete.click((event) => {
+        event.preventDefault();
+
+        alert("DELETAR MÉDICO");
+    });
+
+	form.append(row, buttonEdit, buttonDelete);
     return form;
 }
 
-function genColName() {
+function genColName(medico) {
 
     let div = $("<div></div>");
     div.attr({"class": "input-col"});
@@ -61,12 +75,13 @@ function genColName() {
 
     let input = $("<input>");
 	input.attr({ 
-        "id": "inputNome", 
+        "value": medico.nome,
+        "id": "inputNome",
         "required": "required"
     });
 
 	input.keyup(() => {
-		checkFields();
+		checkFields(medico);
 	});
 
     div.append(label, input);
@@ -74,7 +89,7 @@ function genColName() {
     return div;
 }
 
-function genColEspec() {
+function genColEspec(medico) {
 
     let div = $("<div></div>");
     div.attr({"class": "input-col"});
@@ -88,27 +103,21 @@ function genColEspec() {
         "required": "required"
     });
 
-    let defaultOption = $("<option>Selecionar</option>");
-    defaultOption.attr({
-        "value": "",
-        "selected": "selected",
-        "disabled": "disabled",
-        "hidden": "hidden"
-    });
-
-    select.append(defaultOption);
-
 	const especialidades = JSON.parse(localStorage.getItem("especialidades"));
 	especialidades.map((especialidade) => {
 		let option = $(`<option>${especialidade.nome}</option>`);
 		option.attr({ value: especialidade.id });
+
+        if (especialidade.id == medico.idEspecialidade) {
+            option.attr({"selected": "selected"});
+        }
 
 		select.append(option);
 
 	});
 
 	select.change(() => {
-		checkFields();
+		checkFields(medico);
 	});
 
     div.append(label, select);
@@ -116,15 +125,15 @@ function genColEspec() {
     return div;
 }
 
-function checkFields() {
-
-	if ($("#selectEspec option:selected").val() != "" && $("#inputNome").val() != "") {
-        $("#btnEnviarMedico")
+function checkFields(medicoDados) {
+	if ($("#selectEspec option:selected").val() != "" && $("#inputNome").val() != ""
+        && ($("#selectEspec option:selected").val() != medicoDados.idEspecialidade || $("#inputNome").val() != medicoDados.nome)) {
+        $("#btnEditarMedico")
         .addClass("btnEnabled")
         .prop("disabled", false);
         
     } else {
-        $("#btnEnviarMedico")
+        $("#btnEditarMedico")
         .removeClass("btnEnabled")
         .prop("disabled", true);
     }
