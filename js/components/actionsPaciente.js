@@ -1,4 +1,6 @@
-//import { setAllData } from "../tools/setLocalStorage.js";
+import { putPaciente } from "../api/pacientes.js";
+
+import { setAllData } from "../tools/setLocalStorage.js";
 
 export function actionsPaciente(id) {
 
@@ -26,11 +28,27 @@ export function actionsPaciente(id) {
         event.preventDefault();
 
         const dados = {
+            "id": id,
 			"nome": $("#inputNome").val(),
 			"dataNascimento": `${$("#inputNasc").val()}`
 		};
 
-        console.log(dados);
+        putPaciente(dados)
+        .done((resp) => {
+            
+			if (resp.status == "Erro") {
+				alert("Ocorreu um erro ao editar paciente. Tente novamente");
+
+			} else {
+				setAllData().then(() => {
+                    alert("Paciente editado");
+                    $(".verPacientes").trigger("click");    
+                });
+			};
+
+        }).catch(() => {
+			alert("Ocorreu um erro ao cadastrar paciente. Tente novamente");
+        });
     });
 
     let buttonDelete = $("<button>Deletar</button>");

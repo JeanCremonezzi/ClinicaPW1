@@ -3,9 +3,9 @@ import { getMedicos } from "../api/medicos.js";
 import { getEspecialidades } from "../api/especialidades.js";
 import { getConsultas } from "../api/consultas.js";
 
-export function setAllData() {
-    
-	getEspecialidades()
+export async function setAllData() {
+	
+	await getEspecialidades()
 		.done((data) => {
 			localStorage.setItem("especialidades", JSON.stringify(data));
 		})
@@ -13,7 +13,7 @@ export function setAllData() {
 			alert("Error on get especialidades");
 		});
 
-	getPacientes()
+	await getPacientes()
 		.done((data) => {
 			localStorage.setItem("pacientes", JSON.stringify(data));
 		})
@@ -21,7 +21,7 @@ export function setAllData() {
 			alert("Error on get pacientes");
 		});
 
-	getMedicos()
+	await getMedicos()
 		.done((data) => {
 			localStorage.setItem("medicos", JSON.stringify(data));
 		})
@@ -29,7 +29,7 @@ export function setAllData() {
 			alert("Error on get medicos");
 		});
 
-	getConsultas()
+	await getConsultas()
 		.done((data) => {
 			localStorage.setItem("consultas", JSON.stringify(data));
 		})

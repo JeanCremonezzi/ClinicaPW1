@@ -30,7 +30,6 @@ function genBodyConsultas(data) {
     data.map((consulta) => {
         let row = $("<tr></tr>");
 
-
         let pacienteNome = (JSON.parse(localStorage.getItem("pacientes")))
         .find(pac => pac.id == consulta.idPaciente).nome;
         let paciente = $(`<td>${pacienteNome}</td>`);
@@ -50,7 +49,7 @@ function genBodyConsultas(data) {
             .done((resp) => {
 
                 if (resp.status == "Erro") {
-                    alert("Ocorreu um erro ao cadastrar consulta. Tente novamente");
+                    alert("Ocorreu um erro ao deletar consulta. Tente novamente");
 
                 } else {
                     alert("Consulta cancelada")
