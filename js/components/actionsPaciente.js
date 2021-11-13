@@ -1,4 +1,5 @@
 import { putPaciente } from "../api/pacientes.js";
+import { deletePaciente } from "../api/pacientes.js";
 
 import { setAllData } from "../tools/setLocalStorage.js";
 
@@ -57,7 +58,22 @@ export function actionsPaciente(id) {
     buttonDelete.click((event) => {
         event.preventDefault();
 
-        alert("DELETAR PACIENTE");
+        deletePaciente(id)
+        .done((resp) => {
+
+            if (resp.status == "Erro") {
+				alert("Ocorreu um erro ao deletar paciente. Tente novamente");
+
+			} else {
+                setAllData().then(() => {
+				    alert("Paciente deletado");
+				    $(".verPacientes").trigger("click");
+                });
+			};
+
+        }).catch(() => {
+			alert("Ocorreu um erro ao deletar paciente. Tente novamente");
+		});    
     });
 
 	form.append(row, buttonEdit, buttonDelete);
