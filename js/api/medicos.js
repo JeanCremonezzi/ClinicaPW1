@@ -14,3 +14,12 @@ export function postMedico(data) {
 		data: data
 	});
 };
+
+export function putMedico(data) {
+	return $.ajax({
+		method: "PUT",
+		url: `https://tiagoifsp.ddns.net/clinicaMedica/medicos.php`,
+		dataType: "json",
+		data: data
+	});
+};

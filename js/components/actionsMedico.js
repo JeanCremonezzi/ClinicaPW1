@@ -1,6 +1,6 @@
-/*import { putMedico } from "../api/medicos.js";
+import { putMedico } from "../api/medicos.js";
 
-import { setAllData } from "../tools/setLocalStorage.js";*/
+import { setAllData } from "../tools/setLocalStorage.js";
 
 export function actionsMedico(id) {
 
@@ -33,23 +33,22 @@ export function actionsMedico(id) {
 			"idEspecialidade": `${$("#selectEspec option:selected").val()}`
 		};
 
-        /*put(dados)
+        putMedico(dados)
 		.done((resp) => {
 
 			if (resp.status == "Erro") {
-				alert("Ocorreu um erro ao cadastrar médico. Tente novamente");
+				alert("Ocorreu um erro ao editar médico. Tente novamente");
 
 			} else {
                 setAllData().then(() => {
-				    alert("Médico cadastrado");
-				    $(".addMedico").trigger("click");
+				    alert("Médico editado");
+				    $(".verMedicos").trigger("click");
                 });
 			};
 
 		}).catch(() => {
-			alert("Ocorreu um erro ao cadastrar médico. Tente novamente");
-		});*/
-
+			alert("Ocorreu um erro ao editar médico. Tente novamente");
+		});
     });
 
     let buttonDelete = $("<button>Deletar</button>");
