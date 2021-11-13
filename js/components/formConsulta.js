@@ -5,7 +5,7 @@ import { setAllData } from "../tools/setLocalStorage.js";
 export function formConsulta() {
 	let form = $("<form></form>");
 	form.attr({ id: "formConsulta" });
-	form.attr({ class: "formAdd" });
+	form.attr({ class: "form" });
 
 	let header = $("<h1>Nova Consulta</h1>");
 	form.append(header);

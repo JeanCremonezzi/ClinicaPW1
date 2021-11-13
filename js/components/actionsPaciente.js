@@ -1,8 +1,10 @@
-import { postPaciente } from "../api/pacientes.js";
+//import { setAllData } from "../tools/setLocalStorage.js";
 
-import { setAllData } from "../tools/setLocalStorage.js";
+export function actionsPaciente(id) {
 
-export function formPaciente() {
+    let paciente = JSON.parse(localStorage.getItem("pacientes"))
+    .find(paci => paci.id == id);
+
     let form = $("<form></form>");
 	form.attr({ id: "formPaciente" });
 	form.attr({ class: "form" });
@@ -13,14 +15,14 @@ export function formPaciente() {
 	let row = $("<div></div>");
 	row.attr({ class: "input-row" });
 
-    row.append(genColName());
-    row.append(genColNasc());
+    row.append(genColName(paciente));
+    row.append(genColNasc(paciente));
 
-    let button = $("<button>Enviar</button>");
-    button.attr({"disabled": "disabled"});
-    button.attr({"id": "btnEnviarPaciente"});
+    let buttonEdit = $("<button>Editar</button>");
+    buttonEdit.attr({"disabled": "disabled"});
+    buttonEdit.attr({"id": "btnEnviarPaciente"});
 
-    button.click((event) => {
+    buttonEdit.click((event) => {
         event.preventDefault();
 
         const dados = {
@@ -28,28 +30,23 @@ export function formPaciente() {
 			"dataNascimento": `${$("#inputNasc").val()}`
 		};
 
-        postPaciente(dados)
-		.done((resp) => {
-			
-			if (resp.status == "Erro") {
-				alert("Ocorreu um erro ao cadastrar paciente. Tente novamente");
-
-			} else {
-				alert("Paciente cadastrado");
-				setAllData();
-				$(".addPacientes").trigger("click");
-			};
-
-		}).catch(() => {
-			alert("Ocorreu um erro ao cadastrar paciente. Tente novamente");
-		});
+        console.log(dados);
     });
 
-	form.append(row, button);
+    let buttonDelete = $("<button>Deletar</button>");
+    buttonDelete.attr({"class": "btnDeleteUser"});
+
+    buttonDelete.click((event) => {
+        event.preventDefault();
+
+        alert("DELETAR PACIENTE");
+    });
+
+	form.append(row, buttonEdit, buttonDelete);
     return form;
 }
 
-function genColName() {
+function genColName(paciente) {
 
     let div = $("<div></div>");
     div.attr({"class": "input-col"});
@@ -59,12 +56,13 @@ function genColName() {
 
     let input = $("<input>");
 	input.attr({ 
+        "value": paciente.nome,
         "id": "inputNome", 
         "required": "required"
     });
 
 	input.keyup(() => {
-		checkFields();
+		checkFields(paciente);
 	});
 
     div.append(label, input);
@@ -72,7 +70,7 @@ function genColName() {
     return div;
 }
 
-function genColNasc() {
+function genColNasc(paciente) {
 
     let div = $("<div></div>");
     div.attr({"class": "input-col"});
@@ -85,13 +83,13 @@ function genColNasc() {
     input.attr({
         "type": "date",
         "id": "inputNasc",
-        "value": hoje,
+        "value": paciente.dataNascimento,
         "max": hoje,
         "required": "required"
     });
 
 	input.change(() => {
-		checkFields();
+		checkFields(paciente);
 	});
 
     div.append(label, input);
@@ -99,9 +97,10 @@ function genColNasc() {
     return div;
 }
 
-function checkFields() {
+function checkFields(pacienteDados) {
 
-	if ($("#inputNome").val() != "" && $("#inputNasc").val() != "") {
+	if ($("#inputNome").val() != "" && $("#inputNasc").val() != "" 
+        && ($("#inputNome").val() != pacienteDados.nome || $("#inputNasc").val() != pacienteDados.dataNascimento)) {
         $("#btnEnviarPaciente")
         .addClass("btnEnabled")
         .prop("disabled", false);

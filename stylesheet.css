@@ -10,7 +10,7 @@
 @import "styles/modal.css";
 @import "styles/tableUsuarios.css";
 @import "styles/tableConsultas.css";
-@import "styles/formAdd.css";
+@import "styles/form.css";
 
 :root {
     --surface: #121212;

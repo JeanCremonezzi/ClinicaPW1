@@ -1,5 +1,6 @@
 import { genModal } from "./modal.js";
 import { genOverlay } from "./overlay.js";
+import { actionsPaciente } from "./actionsPaciente.js";
 
 import { formatDate } from "../tools/formatDate.js";
 
@@ -52,6 +53,10 @@ function genBodyPacientes(data) {
         let acoes = $("<td></td>");
         let btnAcoes = $("<button>Ações</button>");
         btnAcoes.attr({"class": "btnAcoes"});
+        btnAcoes.click(() => {
+            $("main").html("");
+            $("main").append(actionsPaciente(paciente.id));
+        })
         acoes.append(btnAcoes);
 
         row.append(nome, nasc, cadastro, consultas, acoes);

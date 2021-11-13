@@ -5,7 +5,7 @@ import { setAllData } from "../tools/setLocalStorage.js";
 export function formMedico() {
     let form = $("<form></form>");
 	form.attr({ id: "formMedico" });
-	form.attr({ class: "formAdd" });
+	form.attr({ class: "form" });
 
 	let header = $("<h1>Novo Médico</h1>");
 	form.append(header);

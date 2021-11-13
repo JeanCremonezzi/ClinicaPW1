@@ -1,4 +1,4 @@
-form.formAdd {
+form.form {
     font-family: 'Mukta', sans-serif;
     display: flex;
     flex-direction: column;
@@ -9,7 +9,7 @@ form.formAdd {
     padding: 5px 10px;
 }
 
-form.formAdd .input-row {
+form.form .input-row {
     display: grid;
     grid-template-columns: 6fr 6fr;
     gap: 1rem;
@@ -17,23 +17,23 @@ form.formAdd .input-row {
     margin-top: 20px;
 }
 
-form.formAdd .input-row .input-col {
+form.form .input-row .input-col {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
-form.formAdd .input-row .input-col:last-of-type {
+form.form .input-row .input-col:last-of-type {
     justify-self: end;
     align-items: flex-end;
 }
 
-form.formAdd .input-row label {
+form.form .input-row label {
     font-size: 0.8rem;
     font-weight: bolder;
 }
 
-form.formAdd input, select {
+form.form input, select {
     font-size: 16px;
     text-align: center;
     margin-top: 5px;
@@ -45,7 +45,7 @@ form.formAdd input, select {
     background: white;
 }
 
-form.formAdd button {
+form.form button {
     margin-top: 20px;
     border: 0;
     height: 40px;
@@ -53,7 +53,6 @@ form.formAdd button {
     text-transform: uppercase;
     font-weight: bolder;
     font-size: 0.9rem;
-    color: var(--elevation2);
     border-radius: 5px;
 }
 
@@ -61,4 +60,11 @@ form.formAdd button {
     background: #B4FE98;
     cursor: pointer;
     transition: background 0.7s;
+    color: var(--elevation2);
+}
+
+.btnDeleteUser {
+    cursor: pointer;
+    background: #e74e3d;
+    color: var(--text);
 }
