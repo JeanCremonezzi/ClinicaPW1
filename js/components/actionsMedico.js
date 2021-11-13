@@ -125,7 +125,8 @@ function genColEspec(medico) {
 }
 
 function checkFields(medicoDados) {
-	if ($("#selectEspec option:selected").val() != "" && $("#inputNome").val() != ""
+	
+    if ($("#selectEspec option:selected").val() != "" && $("#inputNome").val() != ""
         && ($("#selectEspec option:selected").val() != medicoDados.idEspecialidade || $("#inputNome").val() != medicoDados.nome)) {
         $("#btnEditarMedico")
         .addClass("btnEnabled")

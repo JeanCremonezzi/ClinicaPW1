@@ -119,12 +119,12 @@ function checkFields(pacienteDados) {
 
 	if ($("#inputNome").val() != "" && $("#inputNasc").val() != "" 
         && ($("#inputNome").val() != pacienteDados.nome || $("#inputNasc").val() != pacienteDados.dataNascimento)) {
-        $("#btnEnviarPaciente")
+        $("#btnEditarPaciente")
         .addClass("btnEnabled")
         .prop("disabled", false);
         
     } else {
-        $("#btnEnviarPaciente")
+        $("#btnEditarPaciente")
         .removeClass("btnEnabled")
         .prop("disabled", true);
     }
